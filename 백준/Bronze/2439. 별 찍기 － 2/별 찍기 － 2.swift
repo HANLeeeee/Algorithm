@@ -1,13 +1,18 @@
-let line = readLine() ?? ""
-let a = Int(line) ?? 0
+var input = Int(readLine()!)!
 
-for index in 1...a {
-    var result = ""
-    for _ in 1..<a-index+1 {
-        result += " "
+
+for i in 1...input {
+    if i != input{
+        for _ in 1...(input-i) {
+            print(" ", terminator: "")
+        }
+        for _ in 1...i {
+            print("*", terminator: "")
+        }
+    } else {
+        for _ in 1...input {
+            print("*", terminator: "")
+        }
     }
-    for _ in a-index+1...a {
-        result += "*"
-    }
-    print(result)
+    print("")
 }
