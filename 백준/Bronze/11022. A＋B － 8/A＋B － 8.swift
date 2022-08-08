@@ -1,9 +1,7 @@
-let t = Int(readLine()!)!
+var input = Int(readLine()!)!
+var arr: Array<Int> = []
 
-for i in 1...t {
-    let num = readLine()!
-    let numArr = num.split(separator: " ")
-    let a = Int(numArr[0])!
-    let b = Int(numArr[1])!
-    print("Case #\(i): \(a) + \(b) = \(a + b)")
+for i in 1...input {
+    arr = readLine()!.split(separator: " ").map { Int(String($0))! }
+    print("Case #\(i): \(arr[0]) + \(arr[1]) = \(arr[0]+arr[1])")
 }
