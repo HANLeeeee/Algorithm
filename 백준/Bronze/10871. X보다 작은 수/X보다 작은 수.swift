@@ -5,9 +5,9 @@ let N = input[0]
 let X = input[1]
 var result = ""
 
-for i in 0..<arr.count {
-    if X > arr[i] {
-        result += "\(String(arr[i])) "
+for x in arr {
+    if X > x {
+        result += "\(String(x)) "
     }
 }
 print(result)
