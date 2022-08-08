@@ -9,11 +9,11 @@ for _ in 0..<input {
     let num = input2[2]
     if num % height > 0 {
         roomheight = num%height
-        roomweight += num/height+1
+        roomweight = num/height+1
 
     } else {
         roomheight = height
-        roomweight += num/height
+        roomweight = num/height
     }
     if roomweight / 10 == 0 {
         print(String(roomheight)+String(0)+String(roomweight))
