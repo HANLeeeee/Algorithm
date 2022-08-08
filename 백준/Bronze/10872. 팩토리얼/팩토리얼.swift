@@ -1,10 +1,10 @@
 var input = Int(readLine()!)!
-print(factorial(n: input))
 
-func factorial(n: Int) -> Int {
-    if n == 0 {
-        return 1
-    } else {
-        return n * factorial(n: n-1)
+var result = 1
+
+if input > 1 {
+    for i in 2...input {
+        result *= i
     }
 }
+print(result)
