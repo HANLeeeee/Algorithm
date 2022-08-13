@@ -15,11 +15,7 @@ for _ in 0..<num {
             } else {
                 arr.insert(i, at: 0)
             }
-        }
-        
+        }   
     }
-    for i in arr {
-        print(i, terminator: "")
-    }
-    print("")
+    print(arr.joined())
 }
