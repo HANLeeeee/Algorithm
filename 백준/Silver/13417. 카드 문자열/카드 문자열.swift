@@ -1,21 +1,19 @@
-import Foundation
-
 let num = Int(readLine()!)!
 
 for _ in 0..<num {
-    let n = Int(readLine()!)!
+    _ = Int(readLine()!)!
     
     var arr = [String]()
-    let input = readLine()!.components(separatedBy: " ")
+    let input = readLine()!.split(separator: " ").map{String($0)}
     
-    for i in 0..<n {
+    for i in input {
         if arr.isEmpty{
-            arr.append(input[i])
+            arr.append(i)
         } else {
-            if arr.first! < input[i] {
-                arr.append(input[i])
+            if arr.first! < i {
+                arr.append(i)
             } else {
-                arr.insert(input[i], at: 0)
+                arr.insert(i, at: 0)
             }
         }
         
