@@ -1,7 +1,5 @@
 let input = Array(readLine()!).map { String($0)}
 var arr = [String]()
-
-var raser = 0
 var result = 0
 for i in 0..<input.count {
     if input[i] == "(" {
