@@ -1,15 +1,11 @@
 let input = Int(readLine()!)!
 
-//캐시를 통해 저장해두고 반복되는 연산은 가져다가 쓴다
-var cache = [Int](repeating: -1, count: input + 1)
-cache[0] = 0
-cache[1] = 1
+var arr = [Int]()
+arr.append(0)
+arr.append(1)
 
-func fibo(_ num: Int) -> Int {
-    if cache[num] < 0 {
-        cache[num] = fibo(num - 2) + fibo(num - 1)
-    }
-    return cache[num]
+for i in 2...90 {
+    arr.append(arr[i-2] + arr[i-1])
 }
 
-print(fibo(input))
+print(arr[input])
