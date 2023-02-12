@@ -4,11 +4,11 @@
 
 ### 성능 요약
 
-메모리: 121184 KB, 시간: 684 ms
+메모리: 97532 KB, 시간: 272 ms
 
 ### 분류
 
-브루트포스 알고리즘(bruteforcing), 자료 구조(data_structures), 문자열(string), 트리(trees), 트라이(trie)
+자료 구조(data_structures), 문자열(string), 트리(trees), 트라이(trie)
 
 ### 문제 설명
 
