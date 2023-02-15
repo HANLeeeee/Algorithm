@@ -63,14 +63,9 @@ class PriorityQueue<T> {
 
 let input = Int(readLine()!)!
 
-let pq = PriorityQueue<Int>() { a , b in
-    if abs(a) < abs(b){
-        return true
-    }else if abs(a) == abs(b){
-        return a < b
-    }else{
-        return false
-    }
+let pq = PriorityQueue<Int>() { 
+    if abs($0) == abs($1) { return $0 < $1 }
+    return abs($0) < abs($1)
 }
 
 for _ in 0..<input {
