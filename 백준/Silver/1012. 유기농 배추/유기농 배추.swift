@@ -24,9 +24,7 @@ for _ in 0..<t {
         return 0 <= y && y <= n-1 && 0 <= x && x <= m-1 ? true : false
     }
 
-    var count = 0
     func dfs(y: Int, x: Int) {
-        count += 1
         checkArr[y][x] = true
         
         for k in 0..<4 {
@@ -39,15 +37,14 @@ for _ in 0..<t {
         }
     }
 
-    var answer = [Int]()
+    var answer = 0
     for y in 0..<n {
         for x in 0..<m {
             if arr[y][x] == 1 && !checkArr[y][x] {
-                count = 0
                 dfs(y: y, x: x)
-                answer.append(count)
+                answer += 1
             }
         }
     }
-    print(answer.count)
+    print(answer)
 }
