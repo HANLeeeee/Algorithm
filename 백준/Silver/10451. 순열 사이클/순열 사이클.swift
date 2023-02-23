@@ -1,44 +1,29 @@
-let T = Int(readLine()!)!
+let t = Int(readLine()!)!
 
-func sol() {
+for _ in 0..<t {
+    let n = Int(readLine()!)!
+    let numArr = readLine()!.split(separator: " ").map{ Int($0)!}
 
-    for _ in 0..<T {
-        let N = Int(readLine()!)!
-        let nums = readLine()!.split(separator: " ").map{ Int(String($0))! }
-        var line = Array(repeating: 0, count: N+1)
-        var visited = Array(repeating: false, count: N+1)
-        var answer = 0
-        
-        for j in 0..<nums.count {
-            
-            line[j+1] = nums[j]
-        }
-        
-        func dfs(start: Int) {
-            var index = 0
-            var queue = [start]
-            
-            while index < queue.count {
-                let node = queue[index]
-            
-                if !visited[node] {
-                    visited[node] = true
-                    queue.append(line[node])
-                }
-                   
-                index += 1
-            }
-        }
-        
-        for i in 1...N {
-            if !visited[i] {
-                dfs(start: i)
-                answer += 1
-            }
-        }
-        
-        print(answer)
+    var lineArr = Array(repeating: 0, count: n+1)
+    var checkArr = Array(repeating: false, count: n+1)
+    
+    for i in 0..<n {
+        lineArr[i+1] = numArr[i]
     }
+    
+    func dfs(_ num: Int) {
+        if !checkArr[num] {
+            checkArr[num] = true
+            dfs(lineArr[num])
+        }
+    }
+    
+    var count = 0
+    for i in 1..<n+1 {
+        if !checkArr[i] {
+            dfs(i)
+            count += 1
+        }
+    }
+    print(count)
 }
-
-sol()
