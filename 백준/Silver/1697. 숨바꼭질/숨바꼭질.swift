@@ -1,57 +1,68 @@
-struct Queue{
-    var que: [Int] = []
-    mutating func push(_ x: Int) {
-        que.append(x)
+class Queue<T> {
+    var enQueue: [T]
+    var deQueue: [T] = []
+
+    var isEmpty: Bool {
+        return enQueue.isEmpty && deQueue.isEmpty
     }
-    mutating func pop() -> Int {
-        que.reverse()
-        if let a = que.popLast() {
-            que.reverse()
-            return a
+    
+    init(_ queue: [T]) {
+        self.enQueue = queue
+    }
+    
+    func push(_ element: T) {
+        enQueue.append(element)
+    }
+    
+    func pop() -> T {
+        if deQueue.isEmpty {
+            deQueue = enQueue.reversed()
+            enQueue.removeAll()
         }
-        return 0
-    }
-    func empty() -> Bool {
-        return que.isEmpty
-    }
-    func size() -> Int{
-        return que.count
+        return deQueue.popLast()!
     }
 }
 
-func bfs(_ n: Int, _ k: Int) -> Int {
-    var queue = Queue()
-    queue.push(n)
+let input = readLine()!.split(separator: " ").map{ Int($0)!}
+let n = input[0] //수빈이 위치
+let k = input[1] //동생의 위치
 
-    while !queue.empty() {
-        let data = queue.pop()
-        if data == k {
+let MAX = 100000
+var checkArr = Array(repeating: false, count: MAX+1)
+var arr = Array(repeating: 0, count: MAX+1)
+
+func isValid(_ n: Int) -> Bool {
+    return 0 <= n && n <= MAX ? true : false
+}
+
+func bfs(_ n: Int, _ k: Int) {
+    checkArr[n] = true
+    
+    let q = Queue([Int]())
+    q.push(n)
+    
+    while !q.isEmpty {
+        let pop = q.pop()
+        if pop == k {
+            print(arr[pop])
             break
         }
-        if data > 0 && !visited[data - 1] {
-            queue.push(data - 1)
-            visited[data - 1] = true
-            depth[data - 1] = depth[data] + 1
+        if isValid(pop-1) && !checkArr[pop-1] {
+            checkArr[pop-1] = true
+            q.push(pop-1)
+            arr[pop-1] = arr[pop]+1
         }
-        if data < 100000 && !visited[data + 1] {
-            queue.push(data + 1)
-            visited[data + 1] = true
-            depth[data + 1] = depth[data] + 1
+        if isValid(pop+1) && !checkArr[pop+1] {
+            checkArr[pop+1] = true
+            q.push(pop+1)
+            arr[pop+1] = arr[pop]+1
         }
-        if data * 2 < 100001 && !visited[2 * data] {
-            queue.push(2 * data)
-            visited[2 * data] = true
-            depth[data * 2] = depth[data] + 1
+        if isValid(pop*2) && !checkArr[pop*2] {
+            checkArr[pop*2] = true
+            q.push(pop*2)
+            arr[pop*2] = arr[pop]+1
         }
     }
-    return depth[k]
 }
 
-
-let arr = readLine()!.split(separator: " ").map{Int(String($0))!}
-let n = arr[0]
-let k = arr[1]
-var visited: [Bool] = Array(repeating: false, count: 100001)
-var depth: [Int] = Array(repeating: 0, count: 100001)
-let result = bfs(n, k)
-print(result)
+bfs(n, k)
