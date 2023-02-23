@@ -8,8 +8,7 @@ for _ in 0..<n {
     arr.append(input)
 }
 
-//물 높이 최소값과 최대값
-let low = arr.map({ $0.min()! }).min()!
+//물 높이의 최대값
 let high = arr.map({ $0.max()! }).max()!
 
 let dx = [-1, 1, 0, 0]
@@ -26,20 +25,19 @@ func dfs(y: Int, x: Int, height: Int) {
         let nextY = y + dy[k]
         let nextX = x + dx[k]
         
-        if isValid(y: nextY, x: nextX) && !checkArr[nextY][nextX] && arr[nextY][nextX] > height {
+        if isValid(y: nextY, x: nextX) && !checkArr[nextY][nextX] && (arr[nextY][nextX] > height) {
             
             dfs(y: nextY, x: nextX, height: height)
         }
     }
 }
 
-var count = 0
 var answer = [Int]()
 for water in 0..<high+1 {
     //물의 높이마다 방문체크 초기화
     checkArr = Array(repeating: Array(repeating: false, count: n), count: n)
-    count = 0
-    
+    var count = 0
+
     for y in 0..<n {
         for x in 0..<n {
             if arr[y][x] > water && !checkArr[y][x] {
