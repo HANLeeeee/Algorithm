@@ -1,15 +1,21 @@
 let n = Int(readLine()!)!
 
 var arr = [[Int]]()
+var water = Set<Int>()
 var checkArr = Array(repeating: Array(repeating: false, count: n), count: n)
 
+water.insert(0)
 for _ in 0..<n {
     let input = readLine()!.split(separator: " ").map{ Int($0)!}
     arr.append(input)
+    
+    for i in 0..<n {
+        water.insert(input[i])
+    }
 }
 
 //물 높이의 최대값
-let high = arr.map({ $0.max()! }).max()!
+//let high = arr.map({ $0.max()! }).max()!
 
 let dx = [-1, 1, 0, 0]
 let dy = [0, 0, -1, 1]
@@ -33,7 +39,7 @@ func dfs(y: Int, x: Int, height: Int) {
 }
 
 var answer = [Int]()
-for water in 0..<high+1 {
+for water in water {
     //물의 높이마다 방문체크 초기화
     checkArr = Array(repeating: Array(repeating: false, count: n), count: n)
     var count = 0
