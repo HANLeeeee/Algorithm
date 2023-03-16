@@ -80,7 +80,6 @@ while true {
     }
     
     func bfs(z: Int, y: Int, x: Int) -> String {
-        
         let q = Queue<[Int]>([])
         q.push([z, y, x])
         
@@ -108,7 +107,6 @@ while true {
         }
         return "Trapped!"
     }
-    
     checkArr[startArr[0]][startArr[1]][startArr[2]] = true
     print(bfs(z: startArr[0], y: startArr[1], x: startArr[2]))
 }
