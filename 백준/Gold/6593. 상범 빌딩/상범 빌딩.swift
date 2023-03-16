@@ -36,9 +36,7 @@ class Queue<T> {
 
 while true {
     let input = readLine()!.split(separator: " ").map{ Int($0)!}
-    let l = input[0]
-    let r = input[1]
-    let c = input[2]
+    let (l, r, c) = (input[0], input[1], input[2])
     
     //나머지는 0이 될 수 없기 때문에 l만 0이 나오면 (0, 0, 0)
     if l == 0 {
@@ -46,26 +44,21 @@ while true {
     }
     
     var map = [[[String]]]()
-    var startArr = [Int]()
+    var (startZ, startY, startX) = (0, 0, 0)
 
     for i in 0..<l {
         var arr = [[String]]()
-        for j in 0..<r+1 {
-            if j == r {
-                _ = readLine()
-                map.append(arr)
-                break
-            }
+        for j in 0..<r {
             let road = Array(readLine()!).map {String($0)}
+            arr.append(road)
+
             //시작점 찾기
             if road.contains("S") {
-                startArr.append(i)                         //z값
-                startArr.append(j)
-                startArr.append(road.firstIndex(of: "S")!)
+                (startZ, startY, startX) = (i, j, road.firstIndex(of: "S")!)
             }
-            
-            arr.append(road)
         }
+        let _ = readLine()
+        map.append(arr)
     }
     
     var checkArr = Array(repeating: Array(repeating: Array(repeating: false, count: c), count: r), count: l)
@@ -80,6 +73,8 @@ while true {
     }
     
     func bfs(z: Int, y: Int, x: Int) -> String {
+        checkArr[startZ][startY][startX] = true
+
         let q = Queue<[Int]>([])
         q.push([z, y, x])
         
@@ -107,6 +102,6 @@ while true {
         }
         return "Trapped!"
     }
-    checkArr[startArr[0]][startArr[1]][startArr[2]] = true
-    print(bfs(z: startArr[0], y: startArr[1], x: startArr[2]))
+    
+    print(bfs(z: startZ, y: startY, x: startX))
 }
