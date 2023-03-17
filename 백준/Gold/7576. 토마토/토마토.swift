@@ -84,6 +84,7 @@ bfs()
 for i in map {
     if i.contains(0) {
         count = -1
+        break
     }
 }
 print(count)
