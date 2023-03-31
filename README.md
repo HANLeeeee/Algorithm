@@ -1,6 +1,9 @@
-# BaejoonHub
+# Algorithm
 
-백준알고리즘 문제풀이  
+Repository for recording Baekjoon & Programmers Algorithm problem solving
+백준과 프로그래머의 알고리즘 문제 풀이 기록용 저장소
+
+
 
 
 
