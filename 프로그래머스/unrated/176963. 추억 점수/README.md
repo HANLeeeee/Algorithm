@@ -1,10 +1,10 @@
 # [unrated] 추억 점수 - 176963 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/176963?language=swift) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/176963) 
 
 ### 성능 요약
 
-메모리: 16.5 MB, 시간: 0.04 ms
+메모리: 16.3 MB, 시간: 0.03 ms
 
 ### 구분
 
