@@ -3,7 +3,7 @@ import Foundation
 let word = ["aya", "ye", "woo", "ma"]
 var result = 0
 
-func dfs(babble: String) {
+func checkWord(babble: String) {
     for k in 0..<word.count {
         if babble.hasPrefix(word[k]) {
             let nextString = babble.components(separatedBy: word[k])[1]
@@ -13,7 +13,7 @@ func dfs(babble: String) {
                 break
             } else {
                 //잘라진 문자열이 남아있어서 이제 더 봐야한다.
-                dfs(babble: nextString)
+                checkWord(babble: nextString)
             }
         }
     }
@@ -21,7 +21,7 @@ func dfs(babble: String) {
 
 func solution(_ babbling:[String]) -> Int {
     for i in 0..<babbling.count {
-        dfs(babble: babbling[i])
+        checkWord(babble: babbling[i])
     }
     return result
 }
