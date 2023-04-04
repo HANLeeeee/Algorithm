@@ -4,10 +4,8 @@ func solution(_ s:String, _ skip:String, _ index:Int) -> String {
     let char = Array(s)
     let skipChar = Array(skip)
     
-    var arr = [Character]()
-    for i in 97..<123 {
-        arr.append(Character(UnicodeScalar(i)!))
-    }
+    let alpha = "abcdefghijklmnopqrstuvwxyz"
+    var arr = Array(alpha)
     
     for i in 0..<skip.count {
         arr.remove(at: arr.firstIndex(of: skipChar[i])!)
