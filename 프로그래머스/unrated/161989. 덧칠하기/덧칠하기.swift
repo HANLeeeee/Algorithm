@@ -6,7 +6,7 @@ func solution(_ n:Int, _ m:Int, _ section:[Int]) -> Int {
     
     var last = sections.first! + m - 1
     
-    while sections.count != 0 {
+    while !sections.isEmpty {
         result += 1
         for sec in sections {
             if last < sec {
@@ -19,4 +19,3 @@ func solution(_ n:Int, _ m:Int, _ section:[Int]) -> Int {
     }
     return result
 }
- 
