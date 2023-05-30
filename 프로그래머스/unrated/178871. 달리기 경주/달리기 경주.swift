@@ -15,8 +15,8 @@ func solution(_ players:[String], _ callings:[String]) -> [String]  {
         let pre = index - 1
 
         players.swapAt(pre, index)
-        player[players[pre]] = player[players[pre]]! - 1
-        player[players[index]] = player[players[index]]! + 1
+        player[players[pre]]! -= 1
+        player[players[index]]! += 1
     }
 
     return players
