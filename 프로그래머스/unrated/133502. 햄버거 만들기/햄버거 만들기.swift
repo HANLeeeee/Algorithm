@@ -7,8 +7,8 @@ func solution(_ ingredient:[Int]) -> Int {
     for num in ingredient {
 
         arr.append(num)
-        let suffix = arr.suffix(4)
-        if suffix == [1,2,3,1] {
+        // let suffix = arr.suffix(4)
+        if Array(arr.suffix(4)) == [1, 2, 3, 1] {
             result += 1
             arr.removeLast(4)
         }
