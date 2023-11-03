@@ -1,25 +1,27 @@
+import Foundation
+
 func solution(_ keymap:[String], _ targets:[String]) -> [Int] {
-    var result = [Int]()
-    var dic = [String: Int]()
+    var result: [Int] = []
+    var dic: [Character: Int] = [:]
     
-    for i in 0..<keymap.count {
-        let key = Array(keymap[i]).map {String($0)}
-        for j in 0..<key.count {
-            dic[key[j]] = min(dic[key[j]] ?? 100, j+1)
+    for key in keymap {
+        let key = Array(key)
+        for i in 0..<key.count {
+            dic[key[i]] = min(dic[key[i]] ?? 100, i+1)
         }
     }
     
     for i in 0..<targets.count {
-        var count = 0
-        let target = Array(targets[i]).map {String($0)}
-        for j in 0..<target.count {
-            guard dic[target[j]] != nil else {
-                count = -1
+        var sum = 0
+        for char in targets[i] {
+            if let count = dic[char] {
+                sum += count
+            } else {
+                sum = -1
                 break
             }
-            count += dic[target[j]]!
         }
-        result.append(count)
+        result.append(sum)
     }
     
     return result
