@@ -1,14 +1,13 @@
 func solution(_ s:String) -> String {
     let arr = s.components(separatedBy: " ").map { String($0) }
-    var result: [String] = []
+    var result = ""
     
     for word in arr {
-        var change = ""
         for i in 0..<word.count {
-            change += i == 0 ? Array(word)[i].uppercased() : Array(word)[i].lowercased()
+            result += i == 0 ? Array(word)[i].uppercased() : Array(word)[i].lowercased()
         }
-        result.append(change)
+        result += " "
     }
-    
-    return result.joined(separator: " ")
+    _ = result.popLast()
+    return result
 }
