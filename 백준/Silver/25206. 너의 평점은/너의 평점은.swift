@@ -1,4 +1,4 @@
-var dic = [
+var dic: [String: Float] = [
     "A+": 4.5,
     "A0": 4.0,
     "B+": 3.5,
@@ -10,16 +10,15 @@ var dic = [
     "F": 0.0
 ]
 
-var a: Double = 0
-var b: Double = 0
+var a: Float = 0
+var b: Float = 0
 
 for _ in 1...20 {
     let input = readLine()!.split(separator: " ").map{ String($0) }
-    
-    if input[2] == "P" {
+    let (grade, score) = (Float(input[1])!, input[2])
+    if score == "P" {
         continue
     }
-    let (grade, score) = (Double(input[1])!, input[2])
     a += grade * dic[score]!
     b += grade
 }
