@@ -15,14 +15,13 @@ var dic = [
 var a: Double = 0
 var b: Double = 0
 
-(1...20).forEach { i in
+(1...20).forEach { _ in
     let input = readLine()!.split(separator: " ").map{ String($0) }
-    let (_, score, grade) = (input[0], input[1], input[2])
     
-    if grade != "P" {
-        a += Double(score)! * dic[grade]!
-        b += Double(score)!
+    if input[2] != "P" {
+        a += Double(input[1])! * dic[input[2]]!
+        b += Double(input[1])!
     }
 }
 
-print(round(a/b*1000000)/1000000)
+print(a/b)
