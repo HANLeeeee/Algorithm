@@ -2,10 +2,8 @@ import Foundation
 
 func solution(_ A:[Int], _ B:[Int]) -> Int
 {
-    var a = A
-    var b = B
-    a.sort(by: >)
-    b.sort(by: <)
+    let a = A.sorted(by: >)
+    let b = B.sorted(by: <)
     
     var result = 0
     for i in 0..<a.count {
