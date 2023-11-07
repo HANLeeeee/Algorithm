@@ -1,7 +1,7 @@
 import Foundation
 
 func solution(_ lottos:[Int], _ win_nums:[Int]) -> [Int] {
-    let dic: [Int: Int] = [2:5, 3:4, 4:3, 5:2, 6:1]
+    let arr: [Int] = [6, 6, 5, 4, 3, 2, 1]
     var count = 0
     var forget = 0
     for lotto in lottos {
@@ -15,8 +15,5 @@ func solution(_ lottos:[Int], _ win_nums:[Int]) -> [Int] {
             }
         }
     }
-    if count == 0 && forget == 0 {
-        return [6, 6]
-    }
-    return [dic[count+forget] ?? 1, dic[count] ?? 6]
+    return [arr[count+forget], arr[count]]
 }
