@@ -7,7 +7,6 @@ var arr2: [[Int]] = []
 for _ in 0..<input[0] {
     arr1.append(readLine()!.split(separator: " ").map{Int($0)!})
 }
-
 for _ in 0..<input[0] {
     arr2.append(readLine()!.split(separator: " ").map{Int($0)!})
 }
