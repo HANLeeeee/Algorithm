@@ -1,34 +1,38 @@
 import Foundation
 
-var result = Int.max
 var check: [Bool] = []
+var result: [Int] = []
 
 func solution(_ begin: String, _ target: String, _ words: [String]) -> Int {
     check = Array(repeating: false, count: words.count)
+    if !words.contains(target) {
+        return 0
+    }
     dfs(begin, target, words, 0)
-    return result == Int.max ? 0 : result
+    print(result)
+    return result.min() ?? 0
 }
 
 func dfs(_ begin: String, _ target: String, _ words: [String], _ count: Int) {
-    if target == begin {
-        result = result > count ? count : result
-        return
-    }
-    for i in 0..<words.count {
-        if !check[i] {
-            var differences = 0
 
-            for (char1, char2) in zip(begin, words[i]) {
+    for (i, word) in words.enumerated() {
+        var dif = 0
+        if !check[i] {
+            for (char1, char2) in zip(begin, word) {
                 if char1 != char2 {
-                    differences += 1
+                    dif += 1
                 }
-                if differences > 1 {
+                if dif > 1 {
                     break
                 }
             }
-            if differences == 1 {
-                check[i] = words[i] == target ? false : true
-                dfs(words[i], target, words, count + 1)
+            if dif == 1 {
+                check[i] = true
+                dfs(word, target, words, count + 1)
+                if word == target {
+                    result.append(count+1)
+                }
+                check[i] = false
             }
         }
     }
